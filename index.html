@@ -14,6 +14,10 @@
   </script>
   
   <script>
+    $( document ).ready(function() {
+      $('#replaceID').attr('id', `base-${(Math.random() + 1).toString(36).substring(7)}`);
+    });
+    
     const minDelay = 5000;
     const maxDelay = 8000;
 
@@ -51,9 +55,9 @@ Make a thing that loads slowly etc
       Dropdown button
     </button>
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">does nothing</a></li>
+      <li><a class="dropdown-item" href="#">does nothing 1</a></li>
       <li><a class="dropdown-item" href="#" onclick="showFormAfterDelay()">click to reveal form</a></li>
-      <li><a class="dropdown-item" href="#">does nothing</a></li>
+      <li><a class="dropdown-item" href="#">does nothing 3</a></li>
     </ul>
   </div>
 </div>
@@ -89,6 +93,13 @@ Make a thing that loads slowly etc
 <div class="container mt-3">
   <h2>Delayed Element - give it a moment after submitting the form, please!</h2>                                      
   <div style="display: none;" id="delayedDiv">Took me a bit but here I am!</div>
+</div>
+
+<br>
+<br>
+<div class="container mt-3">
+  <h2>Random generated ID</h2>                                      
+  <div id="replaceID">here is the desired text</div>
 </div>
 
 </body>
