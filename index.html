@@ -6,6 +6,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script 
+    src="https://code.jquery.com/jquery-3.6.0.min.js" 
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+    crossorigin="anonymous">
+  </script>
+  
+  <script>
+    function showAfterDelay() {
+      setTimeout(function() {
+        $('#delayed').fadeIn();        
+      }, getRandomInt(5000, 8000));  
+    }
+    function getRandomInt(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      const result = Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+      console.log(`This will take ${result} ms`);
+      return result
+    }
+  </script>
 </head>
 <body>
 
@@ -26,6 +47,37 @@ Make a thing that loads slowly etc
       <li><a class="dropdown-item" href="#">Link 3</a></li>
     </ul>
   </div>
+</div>
+
+<br>
+
+<div class="container mt-3">
+  <h2>Form and data entry</h2>   
+  <form >
+    <div class="form-group">
+      <label for="input-email">Email address</label>
+      <input type="email" class="form-control" id="input-email" aria-describedby="emailHelp" placeholder="Enter email">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="password" placeholder="Password">
+    </div>
+    <br>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="check">
+      <label class="form-check-label" for="check">Check me out</label>
+    </div>
+  </form>
+  <button type="submit" class="btn btn-primary" id="submit" onclick="showAfterDelay()">Submit</button>
+</div>
+
+<br>
+
+<div class="container mt-3">
+  <h2>Delayed Element - give it a moment after submitting the form, please!</h2>                                      
+  <div style="display: none;" id="delayed">Took me a bit but here I am!</div>
 </div>
 
 </body>
