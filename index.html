@@ -14,23 +14,32 @@
   </script>
   
   <script>
-    function showAfterDelay() {
+    const minDelay = 5000;
+    const maxDelay = 8000;
+
+    function showFormAfterDelay() {
       setTimeout(function() {
-        $('#delayed').fadeIn();        
-      }, getRandomInt(5000, 8000));  
+        $('.delayedForm').fadeIn();        
+      }, getRandomInt(minDelay, maxDelay));  
     }
+
+    function showDivAfterDelay() {
+      setTimeout(function() {
+        $('#delayedDiv').fadeIn();        
+      }, getRandomInt(minDelay, maxDelay));  
+    }
+
     function getRandomInt(min, max) {
       min = Math.ceil(min);
       max = Math.floor(max);
       const result = Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
-      console.log(`This will take ${result} ms`);
       return result
     }
   </script>
 </head>
 <body>
 
-<!-- TODO - multiple element types, some with missing class names for discussion (get dev to make changes) 
+<!-- TODO - multiple element types, some with missing class names for discussion (get dev to make changes) RANDOM ID (with consistent root)
 Make a thing that loads slowly etc
 -->
 
@@ -42,9 +51,9 @@ Make a thing that loads slowly etc
       Dropdown button
     </button>
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Link 1</a></li>
-      <li><a class="dropdown-item" href="#">Link 2</a></li>
-      <li><a class="dropdown-item" href="#">Link 3</a></li>
+      <li><a class="dropdown-item" href="#">does nothing</a></li>
+      <li><a class="dropdown-item" href="#" onclick="showFormAfterDelay()">click to reveal form</a></li>
+      <li><a class="dropdown-item" href="#">does nothing</a></li>
     </ul>
   </div>
 </div>
@@ -52,32 +61,34 @@ Make a thing that loads slowly etc
 <br>
 
 <div class="container mt-3">
-  <h2>Form and data entry</h2>   
-  <form >
-    <div class="form-group">
-      <label for="input-email">Email address</label>
-      <input type="email" class="form-control" id="input-email" aria-describedby="emailHelp" placeholder="Enter email">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-    <br>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="password" placeholder="Password">
-    </div>
-    <br>
-    <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="check">
-      <label class="form-check-label" for="check">Check me out</label>
-    </div>
-  </form>
-  <button type="submit" class="btn btn-primary" id="submit" onclick="showAfterDelay()">Submit</button>
+  <h2>Form and data entry - appears after selecting specific drop down choice after a short delay</h2>
+  <div class="delayedForm" style="display: none;">  
+    <form>
+      <div class="form-group">
+        <label for="input-email">Email address</label>
+        <input type="email" class="form-control" id="input-email" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Password">
+      </div>
+      <br>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="check">
+        <label class="form-check-label" for="check">Check me out</label>
+      </div>
+    </form>
+    <button type="submit" class="btn btn-primary" id="submit" onclick="showDivAfterDelay()">Submit</button>
+  </div>
 </div>
 
 <br>
 
 <div class="container mt-3">
   <h2>Delayed Element - give it a moment after submitting the form, please!</h2>                                      
-  <div style="display: none;" id="delayed">Took me a bit but here I am!</div>
+  <div style="display: none;" id="delayedDiv">Took me a bit but here I am!</div>
 </div>
 
 </body>
