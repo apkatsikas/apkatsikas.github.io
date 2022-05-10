@@ -27,9 +27,10 @@
       }, getRandomInt(minDelay, maxDelay));  
     }
 
-    function showDivAfterDelay() {
+    function showElemsAfterDelay() {
       setTimeout(function() {
-        $('#delayedDiv').fadeIn();        
+        $('div.delayedElem').fadeIn(); 
+        $('span.delayedElem').fadeIn();       
       }, getRandomInt(minDelay, maxDelay));  
     }
 
@@ -84,15 +85,16 @@ Make a thing that loads slowly etc
         <label class="form-check-label" for="check">Check me out</label>
       </div>
     </form>
-    <button type="submit" class="btn btn-primary" id="submit" onclick="showDivAfterDelay()">Submit</button>
+    <button type="submit" class="btn btn-primary" id="submit" onclick="showElemsAfterDelay()">Submit</button>
   </div>
 </div>
 
 <br>
 
 <div class="container mt-3">
-  <h2>Delayed Element - give it a moment after submitting the form, please!</h2>                                      
-  <div style="display: none;" id="delayedDiv">Took me a bit but here I am!</div>
+  <h2>Delayed Elements - give it a moment after submitting the form, please!</h2>                                      
+  <div style="display: none;" class="delayedElem">Took me a bit but here I am!</div>
+  <span style="display: none;" class="delayedElem">Another delayed elem</span>
 </div>
 
 <br>
